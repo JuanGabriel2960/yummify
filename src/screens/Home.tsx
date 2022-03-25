@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { theme } from '../theme';
@@ -23,7 +24,7 @@ export const Home = ({ navigation }: Props) => {
   return (
     <View style={container}>
       <View>
-        <Text style={[light, _2xl]}>Food</Text>
+        <Text style={[light, _2xl]}><Icon name="menu" size={30} color="#900" /></Text>
         <Text style={[bold, _2xl]}>Special For You</Text>
         <OptionsBar />
       </View>
