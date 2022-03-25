@@ -13,6 +13,11 @@ export const theme = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between'
     },
+    row: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     light: {
         fontWeight: '300'
     },

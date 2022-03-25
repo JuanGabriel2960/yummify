@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react'
+import Carousel from 'react-native-snap-carousel';
+
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { theme } from '../theme';
 import { OptionsBar } from '../components/OptionsBar';
 import { InformationsCard } from '../components/InformationsCard';
+import { FoodCard } from '../components/FoodCard';
+const foods = require('../data/foods.json')
 // const myIcon = <Icon name="rocket" size={30} color="#900" />;
+
+const { width } = Dimensions.get('window')
+
 
 interface Props extends DrawerScreenProps<any, any> { };
 
@@ -32,7 +39,10 @@ export const Home = ({ navigation }: Props) => {
         <OptionsBar />
       </View>
 
-      <Button title="Go to Order" onPress={() => navigation.navigate('Order')} />
+      {/* <Button title="Go to Order" onPress={() => navigation.navigate('Order')} /> */}
+      <View>
+        <Carousel data={foods} renderItem={({ item }: any) => <FoodCard food={item} />} sliderWidth={width} itemWidth={260} />
+      </View>
 
       <InformationsCard />
     </View>
