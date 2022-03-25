@@ -4,6 +4,7 @@ import { HomeStack } from './HomeStack';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors, theme } from '../theme';
 import { navigationOptions } from '../data';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,7 +30,7 @@ const MenuUI = ({ navigation }: DrawerContentComponentProps<DrawerContentOptions
                     navigationOptions.map(option => (
                         <TouchableOpacity key={option.text} style={styles.link} onPress={() => navigation.navigate(option.navigate)}>
                             <View style={styles.row}>
-                                <Image style={{marginRight: 10}} source={option.icon} />
+                                <Icon style={{ marginRight: 10 }} size={17} name={option.icon} color="#202020" />
                                 <Text style={base}>{option.text}</Text>
                             </View>
                         </TouchableOpacity>

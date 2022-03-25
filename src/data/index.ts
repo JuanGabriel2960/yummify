@@ -1,28 +1,23 @@
 import { navigationOptionsType } from "../interfaces";
 
-const homeIcon = require("../assets/home-icon.png");
-const cartIcon = require("../assets/cart-icon.png");
-const receiptIcon = require("../assets/receipt-icon.png");
-const profileIcon = require("../assets/profile-icon.png");
-
 export const navigationOptions: navigationOptionsType[] = [
     {
-        icon: homeIcon,
+        icon: 'home-sharp',
         text: 'Home',
         navigate: 'StackNavigator'
     },
     {
-        icon: cartIcon,
+        icon: 'cart-sharp',
         text: 'Shopping Cart',
         navigate: 'StackNavigator'
     },
     {
-        icon: receiptIcon,
+        icon: 'receipt-sharp',
         text: 'Receipts',
         navigate: 'StackNavigator'
     },
     {
-        icon: profileIcon,
+        icon: 'person-sharp',
         text: 'Profile',
         navigate: 'StackNavigator'
     }

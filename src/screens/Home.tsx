@@ -24,12 +24,11 @@ export const Home = ({ navigation }: Props) => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableOpacity style={styles.hamburger} onPress={() => navigation.toggleDrawer()}>
-          <Text style={[bold, _3xl]}>&equiv;</Text>
+          <Icon name="menu" style={[bold, _3xl]} color="#000000" />
         </TouchableOpacity>
       )
     })
   }, [])
-
 
   return (
     <View style={container}>
@@ -39,9 +38,8 @@ export const Home = ({ navigation }: Props) => {
         <OptionsBar />
       </View>
 
-      {/* <Button title="Go to Order" onPress={() => navigation.navigate('Order')} /> */}
       <View>
-        <Carousel data={foods} renderItem={({ item }: any) => <FoodCard food={item} />} sliderWidth={width} itemWidth={260} />
+        <Carousel data={foods} renderItem={({ item }: any) => <TouchableOpacity onPress={() => navigation.navigate('Order', item)}><FoodCard food={item} /></TouchableOpacity>} sliderWidth={width} itemWidth={260} />
       </View>
 
       <InformationsCard />
@@ -51,6 +49,6 @@ export const Home = ({ navigation }: Props) => {
 
 const styles = StyleSheet.create({
   hamburger: {
-    marginLeft: 15
+    marginLeft: 15,
   }
 })
