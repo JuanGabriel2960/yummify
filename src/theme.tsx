@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const colors = {
     lightGray: '#fafcfd',
     mediumGray: '#aaaaaa',
+    mediumBlack: '#202020',
 }
 
 export const theme = StyleSheet.create({

@@ -1,5 +1,5 @@
 export interface navigationOptionsType {
     text: string;
-    icon: string;
+    icon: any;
     navigate: string;
 }

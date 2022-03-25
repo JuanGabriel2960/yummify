@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 import { colors, theme } from '../theme';
+const addressIcon = require("../assets/address-icon.png");
 
 export const InformationsCard = () => {
 
@@ -10,7 +11,7 @@ export const InformationsCard = () => {
         <View style={styles.informationsCard}>
             <Text style={bold}>Your informations</Text>
             <View style={styles.informationsInfo}>
-                <Text style={styles.icon}>!</Text>
+                <Image source={addressIcon} style={styles.icon} />
                 <View>
                     <Text style={{ color: colors.mediumGray }}>Your Delivery Address</Text>
                     <Text style={[lg, bold]}>sadsadAddresssadsad</Text>
@@ -33,6 +34,6 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     icon: {
-        marginRight: 15
+        marginRight: 15,
     }
 })

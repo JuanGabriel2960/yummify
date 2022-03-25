@@ -1,8 +1,8 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
 import { HomeStack } from './HomeStack';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { theme } from '../theme';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { colors, theme } from '../theme';
 import { navigationOptions } from '../data';
 
 const Drawer = createDrawerNavigator();
@@ -28,7 +28,8 @@ const MenuUI = ({ navigation }: DrawerContentComponentProps<DrawerContentOptions
                 {
                     navigationOptions.map(option => (
                         <TouchableOpacity key={option.text} style={styles.link} onPress={() => navigation.navigate(option.navigate)}>
-                            <View>
+                            <View style={styles.row}>
+                                <Image style={{marginRight: 10}} source={option.icon} />
                                 <Text style={base}>{option.text}</Text>
                             </View>
                         </TouchableOpacity>
@@ -45,11 +46,16 @@ const styles = StyleSheet.create({
     },
     top: {
         borderBottomWidth: 1,
-        marginBottom: 20,
+        marginBottom: 30,
         paddingBottom: 5
     },
+    row: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     link: {
-        backgroundColor: '#efefef',
+        backgroundColor: colors.lightGray,
         marginBottom: 15,
         padding: 10
     }
