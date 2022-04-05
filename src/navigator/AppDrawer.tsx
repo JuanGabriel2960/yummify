@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
 import { HomeStack } from './HomeStack';
+import { LoginStack } from './LoginStack';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors, theme } from '../theme';
 import { navigationOptions } from '../data';
@@ -11,7 +12,7 @@ const Drawer = createDrawerNavigator();
 export const AppDrawer = () => {
     return (
         <Drawer.Navigator drawerContent={(props) => <MenuUI {...props} />}>
-            <Drawer.Screen name="StackNavigator" component={HomeStack} />
+            <Drawer.Screen name="LoginStack" component={LoginStack} />
         </Drawer.Navigator>
     );
 }
