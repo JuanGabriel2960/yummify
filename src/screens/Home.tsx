@@ -1,14 +1,54 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native';
+import React, { useEffect } from 'react'
+import Carousel from 'react-native-snap-carousel';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { DrawerScreenProps } from '@react-navigation/drawer';
+import { theme } from '../theme';
+import { OptionsBar } from '../components/OptionsBar';
+import { InformationsCard } from '../components/InformationsCard';
+import { FoodCard } from '../components/FoodCard';
+const foods = require('../data/foods.json')
+// const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
-interface Props extends DrawerScreenProps<any, any>{};
+const { width } = Dimensions.get('window')
 
-export const Home = ({ navigation }: Props ) => {
+
+interface Props extends DrawerScreenProps<any, any> { };
+
+export const Home = ({ navigation }: Props) => {
+
+  const { container, light, bold, _2xl, _3xl } = theme;
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity style={styles.hamburger} onPress={() => navigation.toggleDrawer()}>
+          <Icon name="menu" style={[bold, _3xl]} color="#000000" />
+        </TouchableOpacity>
+      )
+    })
+  }, [])
+
   return (
-    <View>
-        <Text>Home</Text>
-        <Button title="Go to Order" onPress={ () => navigation.navigate('Order') } />
+    <View style={container}>
+      <View>
+        <Text style={[light, _2xl]}>Food</Text>
+        <Text style={[bold, _2xl]}>Special For You</Text>
+        <OptionsBar />
+      </View>
+
+      <View>
+        <Carousel data={foods} renderItem={({ item }: any) => <TouchableOpacity onPress={() => navigation.navigate('Order', item)}><FoodCard food={item} /></TouchableOpacity>} sliderWidth={width} itemWidth={260} />
+      </View>
+
+      <InformationsCard />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  hamburger: {
+    marginLeft: 15,
+  }
+})

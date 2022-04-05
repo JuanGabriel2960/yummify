@@ -1,0 +1,163 @@
+[
+    {
+        "id": "1",
+        "calories": 147,
+        "image": "https://i.imgur.com/1pbt2we.png",
+        "name": "Vegetables",
+        "description": "Tomatoes and olives",
+        "price": 6.99,
+        "size": "Small"
+    },
+    {
+        "id": "2",
+        "calories": 266,
+        "image": "https://i.imgur.com/brpd983.png",
+        "name": "Classic",
+        "description": "Pepperoni and cheese",
+        "price": 7.99,
+        "size": "Small"
+    },
+    {
+        "id": "3",
+        "calories": 217,
+        "image": "https://i.imgur.com/RYmuRnE.png",
+        "name": "Carbonara",
+        "description": "Mushrooms",
+        "price": 8.55,
+        "size": "Small"
+    },
+    {
+        "id": "4",
+        "calories": 196,
+        "image": "https://i.imgur.com/tESrLfS.png",
+        "name": "Cheesy",
+        "description": "Mixed with cheese",
+        "price": 9.75,
+        "size": "Small"
+    },
+    {
+        "id": "5",
+        "calories": 205,
+        "image": "https://i.imgur.com/Pskeqy9.png",
+        "name": "Mixed",
+        "description": "Mixed vegetables",
+        "price": 8.25,
+        "size": "Small"
+    },
+    {
+        "id": "6",
+        "calories": 324,
+        "image": "https://i.imgur.com/JLi1clE.png",
+        "name": "Complete",
+        "description": "Full ingredients",
+        "price": 14.99,
+        "size": "Small"
+    },
+    {
+        "id": "7",
+        "calories": 295,
+        "image": "https://i.imgur.com/zQhquAc.png",
+        "name": "Quarter",
+        "description": "Cheese and pickle",
+        "price": 5.19,
+        "size": "Small"
+    },
+    {
+        "id": "8",
+        "calories": 607,
+        "image": "https://i.imgur.com/f8wc8n7.png",
+        "name": "Whopper",
+        "description": "Double meat",
+        "price": 7.99,
+        "size": "Small"
+    },
+    {
+        "id": "9",
+        "calories": 183,
+        "image": "https://i.imgur.com/50r6OPH.png",
+        "name": "Veggie",
+        "description": "Vegan meat",
+        "price": 6.75
+    },
+    {
+        "id": "10",
+        "calories": 781,
+        "image": "https://i.imgur.com/1yloWDq.png",
+        "name": "Mega",
+        "description": "Chicken and meat",
+        "price": 8.99,
+        "size": "Small"
+    },
+    {
+        "id": "11",
+        "calories": 203,
+        "image": "https://i.imgur.com/m1ZIZsh.png",
+        "name": "Little",
+        "description": "Kids burger",
+        "price": 3.99,
+        "size": "Small"
+    },
+    {
+        "id": "12",
+        "calories": 652,
+        "image": "https://i.imgur.com/W2avQAE.png",
+        "name": "Stacker",
+        "description": "Big meat",
+        "price": 7.55,
+        "size": "Small"
+    },
+    {
+        "id": "13",
+        "calories": 247,
+        "image": "https://i.imgur.com/2ZInkro.png",
+        "name": "Nuggets",
+        "description": "Natural chicken",
+        "price": 4.99,
+        "size": "Small"
+    },
+    {
+        "id": "14",
+        "calories": 284,
+        "image": "https://i.imgur.com/96k8qze.png",
+        "name": "French Fries",
+        "description": "Salted potatoes",
+        "price": 3.99,
+        "size": "Small"
+    },
+    {
+        "id": "15",
+        "calories": 407,
+        "image": "https://i.imgur.com/hEkyCDU.png",
+        "name": "Onion Rings",
+        "description": "Breaded and fried",
+        "price": 3.35,
+        "size": "Small"
+    },
+    {
+        "id": "16",
+        "calories": 140,
+        "image": "https://i.imgur.com/Du49USl.png",
+        "name": "Coca Cola",
+        "description": "Soft drink",
+        "price": 2.33,
+        "size": "Small"
+    },
+    {
+        "id": "17",
+        "calories": 45,
+        "image": "https://i.imgur.com/FwiZmvm.png",
+        "name": "Orange Juice",
+        "description": "Refreshing juice",
+        "price": 2.45,
+        "size": "Small"
+    },
+    {
+        "id": "18",
+        "calories": 207,
+        "image": "https://i.imgur.com/WoZ1W2K.png",
+        "name": "Ice Cream",
+        "description": "Delicious chocolate",
+        "price": 4.33,
+        "size": "Small"
+    }
+]
