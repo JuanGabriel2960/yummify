@@ -1,10 +1,12 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native';
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Keyboard, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors, theme } from '../theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useForm } from '../hooks/useForm';
 import { StackScreenProps } from '@react-navigation/stack';
+import http from '../api/http';
 
 interface Props extends StackScreenProps<any, any> { };
 
@@ -12,13 +14,19 @@ export const Login = ({ navigation }: Props) => {
 
     const { container, bold, _2xl, xl, lg } = theme;
     const { email, password, onChange } = useForm({
-        email: '',
-        password: ''
+        email: 'florangel@example.com',
+        password: '123456789'
     })
 
-    const submit = () => {
-        console.log({ email, password })
+    const submit = async () => {
         Keyboard.dismiss()
+
+        try {
+            const resp = await http.post<{ token: string }>('/api/auth/customer/login', { email, password })
+            await AsyncStorage.setItem('Authorization', resp.data.token)
+        } catch (error: any) {
+            Alert.alert('Error', error.response.data.msg || 'An error ocurred. Please try again later.')
+        }
     }
 
     return (

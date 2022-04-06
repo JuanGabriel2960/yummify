@@ -4,12 +4,9 @@ export interface navigationOptionsType {
     navigate: string;
 }
 
-export interface Food {
-    calories: number;
-    image: string;
-    name: string;
-    description: string;
-    price: number;
+export interface RenewResp {
+    authenticated: Customer;
+    token:         string;
 }
 
 export interface Customer {
@@ -18,4 +15,12 @@ export interface Customer {
     email: string;
     status: boolean;
     google: boolean;
+}
+
+export interface Food {
+    calories: number;
+    image: string;
+    name: string;
+    description: string;
+    price: number;
 }

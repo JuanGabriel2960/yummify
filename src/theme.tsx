@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const colors = {
     lightGray: '#f8fafe',
     mediumGray: '#aaaaaa',
-    mediumYellow: '#ffd980',
     boldYellow: '#ffbb20',
     mediumBlack: '#202020',
 }

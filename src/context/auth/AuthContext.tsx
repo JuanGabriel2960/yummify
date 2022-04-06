@@ -1,15 +1,17 @@
-import React, { createContext, useReducer } from "react";
-import { Customer } from "../../interfaces";
+import React, { createContext, useEffect, useReducer } from "react";
+import { Customer, RenewResp } from "../../interfaces";
 import { authReducer, AuthState } from './AuthReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import http from '../../api/http';
 
 type AuthContextProps = {
     customer: Customer | null;
-    setCustomer: () => void;
-    removeCustomer: () => void;
+    status: 'checking' | 'authenticated' | 'unauthenticated';
 }
 
 const authInitialState: AuthState = {
-    customer: null
+    customer: null,
+    status: 'checking',
 }
 
 export const AuthContext = createContext({} as AuthContextProps)
@@ -18,14 +20,36 @@ export const AuthProvider = ({ children }: any) => {
 
     const [state, dispatch] = useReducer(authReducer, authInitialState)
 
-    const setCustomer = () => { };
-    const removeCustomer = () => { };
+    useEffect(() => {
+        validateJWT();
+    }, [])
+
+    const validateJWT = async () => {
+        const token = await AsyncStorage.getItem('Authorization')
+
+        if (!token) return dispatch({ type: 'removeCustomer' })
+
+        const resp = await http.get<RenewResp>('/api/auth/renew', {
+            headers: {
+                Authorization: token
+            }
+        })
+
+        if (resp.status !== 200) {
+            return dispatch({ type: 'removeCustomer' })
+        }
+
+        dispatch({
+            type: 'setCustomer',
+            payload: {
+                customer: resp.data.authenticated
+            }
+        })
+    }
 
     return (
         <AuthContext.Provider value={{
             ...state,
-            setCustomer,
-            removeCustomer
         }}>
             {children}
         </AuthContext.Provider>

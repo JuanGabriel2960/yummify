@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
 import { HomeStack } from './HomeStack';
 import { LoginStack } from './LoginStack';
@@ -6,13 +6,25 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors, theme } from '../theme';
 import { navigationOptions } from '../data';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { AuthContext } from '../context/auth/AuthContext';
 
 const Drawer = createDrawerNavigator();
 
 export const AppDrawer = () => {
+
+    const { status } = useContext(AuthContext);
+
     return (
         <Drawer.Navigator drawerContent={(props) => <MenuUI {...props} />}>
-            <Drawer.Screen name="LoginStack" component={LoginStack} />
+            {
+                (status !== 'authenticated')
+                    ? (
+                        <Drawer.Screen name="LoginStack" component={LoginStack} />
+                    )
+                    : (
+                        <Drawer.Screen name="HomeStack" component={HomeStack} />
+                    )
+            }
         </Drawer.Navigator>
     );
 }
