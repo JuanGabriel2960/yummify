@@ -4,10 +4,18 @@ export interface navigationOptionsType {
     navigate: string;
 }
 
-export interface Food{
+export interface Food {
     calories: number;
     image: string;
     name: string;
     description: string;
     price: number;
+}
+
+export interface Customer {
+    id: number;
+    name: string;
+    email: string;
+    status: boolean;
+    google: boolean;
 }
