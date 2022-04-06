@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Keyboard, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Keyboard, Alert, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors, theme } from '../theme';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useForm } from '../hooks/useForm';
 import { StackScreenProps } from '@react-navigation/stack';
 import http from '../api/http';
+import { AuthContext } from '../context/auth/AuthContext';
 
 interface Props extends StackScreenProps<any, any> { };
 
 export const Login = ({ navigation }: Props) => {
 
+    const { validateJWT } = useContext(AuthContext)
+
     const { container, bold, _2xl, xl, lg } = theme;
     const { email, password, onChange } = useForm({
-        email: 'florangel@example.com',
-        password: '123456789'
+        email: '',
+        password: ''
     })
 
     const submit = async () => {
@@ -24,6 +26,7 @@ export const Login = ({ navigation }: Props) => {
         try {
             const resp = await http.post<{ token: string }>('/api/auth/customer/login', { email, password })
             await AsyncStorage.setItem('Authorization', resp.data.token)
+            validateJWT()
         } catch (error: any) {
             Alert.alert('Error', error.response.data.msg || 'An error ocurred. Please try again later.')
         }

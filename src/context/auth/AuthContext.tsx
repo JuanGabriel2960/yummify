@@ -7,6 +7,8 @@ import http from '../../api/http';
 type AuthContextProps = {
     customer: Customer | null;
     status: 'checking' | 'authenticated' | 'unauthenticated';
+    removeCustomer: () => void;
+    validateJWT: () => Promise<void>;
 }
 
 const authInitialState: AuthState = {
@@ -47,9 +49,16 @@ export const AuthProvider = ({ children }: any) => {
         })
     }
 
+    const removeCustomer = async () => {
+        await AsyncStorage.removeItem('Authorization')
+        dispatch({ type: 'removeCustomer' });
+    };
+
     return (
         <AuthContext.Provider value={{
             ...state,
+            removeCustomer,
+            validateJWT
         }}>
             {children}
         </AuthContext.Provider>
