@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const colors = {
-    lightGray: '#fafcfd',
+    lightGray: '#f8fafe',
     mediumGray: '#aaaaaa',
+    boldYellow: '#ffbb20',
     mediumBlack: '#202020',
-    mediumYellow: '#ffd980',
 }
 
 export const theme = StyleSheet.create({

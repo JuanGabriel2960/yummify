@@ -38,7 +38,7 @@ export const Order = ({ route }: Props) => {
             <Text style={[xs, { color: colors.mediumGray }]}>Price</Text>
             <Text style={[_2xl, bold]}>${params.price}</Text>
           </View>
-          <TouchableOpacity style={{backgroundColor: colors.mediumYellow, borderRadius: 100, padding: 18}}>
+          <TouchableOpacity style={{backgroundColor: colors.boldYellow, borderRadius: 100, padding: 18}}>
             <Image source={shopIcon} />
           </TouchableOpacity>
         </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   btn: {
-    backgroundColor: colors.mediumYellow,
+    backgroundColor: colors.boldYellow,
     borderRadius: 50,
     paddingVertical: 10,
     paddingHorizontal: 23,

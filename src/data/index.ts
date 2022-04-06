@@ -4,22 +4,22 @@ export const navigationOptions: navigationOptionsType[] = [
     {
         icon: 'home-sharp',
         text: 'Home',
-        navigate: 'StackNavigator'
+        navigate: 'HomeStack'
     },
     {
         icon: 'cart-sharp',
         text: 'Shopping Cart',
-        navigate: 'StackNavigator'
+        navigate: 'HomeStack'
     },
     {
         icon: 'receipt-sharp',
         text: 'Receipts',
-        navigate: 'StackNavigator'
+        navigate: 'HomeStack'
     },
     {
         icon: 'person-sharp',
         text: 'Profile',
-        navigate: 'StackNavigator'
+        navigate: 'HomeStack'
     }
 ]
 
