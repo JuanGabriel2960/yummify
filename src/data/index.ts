@@ -23,4 +23,25 @@ export const navigationOptions: navigationOptionsType[] = [
     }
 ]
 
-export const options: string[] = ['Pizza', 'Burgers', 'Extras', 'All', 'Favorites']
+export const options: { text: string, type: string }[] = [
+    {
+        text: 'Pizza',
+        type: 'pizza'
+    },
+    {
+        text: 'Burgers',
+        type: 'burger'
+    },
+    {
+        text: 'Extra',
+        type: 'extra'
+    },
+    {
+        text: 'All',
+        type: ''
+    },
+    {
+        text: 'Favorites',
+        type: 'favorite'
+    },
+]

@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { Food } from '../interfaces';
 import { colors, theme } from '../theme';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
     food: Food;
@@ -15,7 +16,7 @@ export const FoodCard = ({ food }: Props) => {
         <View style={styles.foodCard}>
             <View style={[row, { justifyContent: 'space-between' }]}>
                 <Text style={{ color: colors.mediumGray }}>{food.calories} Calories</Text>
-                <Text>&hearts;</Text>
+                <Icon style={{ color: colors.mediumGray }} size={17} name="heart" color="#202020" />
             </View>
             <Image style={styles.image} source={{ uri: food.image }} />
             <View>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
@@ -7,13 +7,14 @@ import { theme } from '../theme';
 import { OptionsBar } from '../components/OptionsBar';
 import { InformationsCard } from '../components/InformationsCard';
 import { FoodCard } from '../components/FoodCard';
-const foods = require('../data/foods.json')
+import { MenuContext } from '../context/menu/MenuContext';
 const { width } = Dimensions.get('window')
 
 interface Props extends DrawerScreenProps<any, any> { };
 
 export const Home = ({ navigation }: Props) => {
 
+  const { menu } = useContext(MenuContext)
   const { container, light, bold, _2xl, _3xl } = theme;
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export const Home = ({ navigation }: Props) => {
       </View>
 
       <View>
-        <Carousel data={foods} renderItem={({ item }: any) => <TouchableOpacity onPress={() => navigation.navigate('Order', item)}><FoodCard food={item} /></TouchableOpacity>} sliderWidth={width} itemWidth={260} />
+        <Carousel data={menu} renderItem={({ item }: any) => <TouchableOpacity onPress={() => navigation.navigate('Order', item)}><FoodCard food={item} /></TouchableOpacity>} sliderWidth={width} itemWidth={260} />
       </View>
 
       <InformationsCard />
