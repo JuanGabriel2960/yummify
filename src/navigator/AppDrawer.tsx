@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
 import { HomeStack } from './HomeStack';
 import { LoginStack } from './LoginStack';
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { CartStack } from './CartStack';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { colors, theme } from '../theme';
 import { navigationOptions } from '../data';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -29,7 +30,10 @@ export const AppDrawer = () => {
                         <Drawer.Screen name="LoginStack" component={LoginStack} />
                     )
                     : (
-                        <Drawer.Screen name="HomeStack" component={HomeStack} />
+                        <>
+                            <Drawer.Screen name="HomeStack" component={HomeStack} />
+                            <Drawer.Screen name="CartStack" component={CartStack} />
+                        </>
                     )
             }
         </Drawer.Navigator>
