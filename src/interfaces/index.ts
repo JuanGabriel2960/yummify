@@ -6,7 +6,7 @@ export interface navigationOptionsType {
 
 export interface RenewResp {
     authenticated: Customer;
-    token:         string;
+    token: string;
 }
 
 export interface Customer {
@@ -38,4 +38,14 @@ export enum valid_type {
     Burger = "burger",
     Pizza = "pizza",
     Extra = "extra",
+}
+
+export interface FoodInCart extends Food {
+    size: valid_size
+}
+
+export enum valid_size {
+    S = "S",
+    M = "M",
+    L = "L",
 }

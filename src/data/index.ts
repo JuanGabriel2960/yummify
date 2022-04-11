@@ -1,4 +1,5 @@
 import { navigationOptionsType } from "../interfaces";
+import { valid_size } from '../interfaces/index';
 
 export const navigationOptions: navigationOptionsType[] = [
     {
@@ -9,7 +10,7 @@ export const navigationOptions: navigationOptionsType[] = [
     {
         icon: 'cart-sharp',
         text: 'Shopping Cart',
-        navigate: 'HomeStack'
+        navigate: 'CartStack'
     },
     {
         icon: 'receipt-sharp',
@@ -45,3 +46,5 @@ export const options: { text: string, type: string }[] = [
         type: 'favorite'
     },
 ]
+
+export const sizes: valid_size[] = [valid_size.S, valid_size.M, valid_size.L]

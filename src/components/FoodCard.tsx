@@ -1,16 +1,33 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native';
-import { Food } from '../interfaces';
+import { FoodInCart } from '../interfaces';
 import { colors, theme } from '../theme';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
-    food: Food;
+    food: FoodInCart;
+    type?: 'card' | 'rectangle'
 }
 
-export const FoodCard = ({ food }: Props) => {
+export const FoodCard = ({ food, type = 'card' }: Props) => {
 
     const { row, lg, light, bold, base } = theme;
+
+    if (type == 'rectangle') {
+        return (
+            <View style={styles.foodCardRectangle}>
+                <Image style={styles.imageRectangle} source={{ uri: food.image }} />
+                <View>
+                    <Text style={[lg, bold]}>{food.name}</Text>
+                    <Text style={{ color: colors.mediumGray }}>{food.calories} Calories</Text>
+                </View>
+                <View>
+                    <Text style={[lg, bold]}>${food.price}</Text>
+                    <Text style={{ color: colors.mediumGray }}>{food.size == 'S' ? 'Small' : food.size == 'M' ? 'Medium' : 'Large'}</Text>
+                </View>
+            </View>
+        )
+    }
 
     return (
         <View style={styles.foodCard}>
@@ -39,5 +56,19 @@ const styles = StyleSheet.create({
         height: 150,
         marginVertical: 20,
         alignSelf: 'center'
+    },
+    foodCardRectangle: {
+        padding: 10,
+        borderRadius: 6,
+        backgroundColor: colors.lightGray,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 12
+    },
+    imageRectangle: {
+        width: 150,
+        height: 150
     }
 })

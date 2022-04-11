@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { theme } from '../theme';
 import { OptionsBar } from '../components/OptionsBar';
@@ -20,7 +20,7 @@ export const Home = ({ navigation }: Props) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableOpacity style={styles.hamburger} onPress={() => navigation.toggleDrawer()}>
+        <TouchableOpacity style={{ marginLeft: 15 }} onPress={() => navigation.toggleDrawer()}>
           <Icon name="menu" style={[bold, _3xl]} color="#000000" />
         </TouchableOpacity>
       )
@@ -43,9 +43,3 @@ export const Home = ({ navigation }: Props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  hamburger: {
-    marginLeft: 15,
-  }
-})
