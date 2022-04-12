@@ -28,25 +28,24 @@ export const AuthProvider = ({ children }: any) => {
 
     const validateJWT = async () => {
         const token = await AsyncStorage.getItem('Authorization')
-
         if (!token) return dispatch({ type: 'removeCustomer' })
 
-        const resp = await http.get<RenewResp>('/api/auth/renew', {
-            headers: {
-                Authorization: token
-            }
-        })
+        try {
+            const resp = await http.get<RenewResp>('/api/auth/renew', {
+                headers: {
+                    Authorization: token
+                }
+            })
 
-        if (resp.status !== 200) {
-            return dispatch({ type: 'removeCustomer' })
+            dispatch({
+                type: 'setCustomer',
+                payload: {
+                    customer: resp.data.authenticated
+                }
+            })
+        } catch (error) {
+            dispatch({ type: 'removeCustomer' })
         }
-
-        dispatch({
-            type: 'setCustomer',
-            payload: {
-                customer: resp.data.authenticated
-            }
-        })
     }
 
     const removeCustomer = async () => {
