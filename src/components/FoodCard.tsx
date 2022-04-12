@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         marginBottom: 12
     },
     imageRectangle: {
-        width: 150,
-        height: 150
+        width: 120,
+        height: 120
     }
 })

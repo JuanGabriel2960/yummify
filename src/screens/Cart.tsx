@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DrawerScreenProps } from '@react-navigation/drawer';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors, theme } from '../theme';
 import { FoodCard } from '../components/FoodCard';
 import { CartContext } from '../context/cart/CartContext';
 import { roundOut } from '../helpers';
+const emptyCart = require('../assets/empty-cart.png')
 
 interface Props extends DrawerScreenProps<any, any> { };
 
 export const Cart = ({ navigation }: Props) => {
 
     const { cart } = useContext(CartContext)
-    const { container, bold, _2xl, _3xl, lg } = theme;
+    const { container, bold, _2xl, _3xl, lg, xl, base } = theme;
 
     const [billing, setBilling] = useState({
         item_total: 0,
@@ -30,7 +31,9 @@ export const Cart = ({ navigation }: Props) => {
             )
         })
 
-        calculatePrices()
+        if (cart.length > 0) {
+            calculatePrices()
+        }
     }, [cart])
 
     const calculatePrices = () => {
@@ -47,13 +50,28 @@ export const Cart = ({ navigation }: Props) => {
     return (
         <View style={container}>
             <Text style={[bold, _2xl]}>Cart</Text>
-            <ScrollView style={styles.cartScroll}>
-                {
-                    cart.map((food, i) => (
-                        <FoodCard key={i} food={food} type='rectangle' />
-                    ))
-                }
-            </ScrollView>
+            {
+                (cart.length < 1)
+                    ? (
+                        <View style={styles.empty}>
+                            <Image source={emptyCart} />
+                            <View style={{ alignItems: 'center' }}>
+                                <Text style={[{ marginTop: 20, marginBottom: 5 }, bold, xl]}>Your Cart is Empty</Text>
+                                <Text style={[{ color: colors.mediumGray }, base]}>Looks like you haven't added</Text>
+                                <Text style={[{ color: colors.mediumGray }, base]}>anything to your cart yet</Text>
+                            </View>
+                        </View>
+                    )
+                    : (
+                        <ScrollView style={styles.cartScroll}>
+                            {
+                                cart.map((food, i) => (
+                                    <FoodCard key={i} food={food} type='rectangle' />
+                                ))
+                            }
+                        </ScrollView>
+                    )
+            }
             <View style={styles.summaryContainer}>
                 <View style={styles.summary}>
                     <Text style={{ color: colors.mediumGray }}>Item Total</Text>
@@ -101,5 +119,10 @@ const styles = StyleSheet.create({
         width: 150,
         paddingVertical: 10,
         borderRadius: 15
+    },
+    empty: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
