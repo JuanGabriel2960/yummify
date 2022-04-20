@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import http from '../../api/http';
 import { Food } from '../../interfaces';
-import { MenuResp } from '../../interfaces/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type MenuContextProps = {
@@ -25,12 +24,12 @@ export const MenuProvider = ({ children }: any) => {
     const getMenu = async () => {
         const token = await AsyncStorage.getItem('Authorization') || ''
 
-        const resp = await http.get<MenuResp>(`/api/menu?limit=99&type=${type}`, {
+        const resp = await http.get<Food[]>(`/api/menu?type=${type}`, {
             headers: {
                 Authorization: token
             }
         })
-        setMenu([...resp.data.menu]);
+        setMenu([...resp.data]);
     }
 
     const changeType = (type: string) => {

@@ -17,13 +17,6 @@ export interface Customer {
     google: boolean;
 }
 
-export interface MenuResp {
-    count: number;
-    next: number;
-    previous: number;
-    menu: Food[];
-}
-
 export interface Food {
     id: number;
     name: string;
