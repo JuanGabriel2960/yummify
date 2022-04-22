@@ -10,12 +10,19 @@ const emptyCart = require('../assets/empty-cart.png')
 
 interface Props extends DrawerScreenProps<any, any> { };
 
+export interface State {
+    item_total: number;
+    delivery_charge: number;
+    tax: number;
+    total: number;
+}
+
 export const Cart = ({ navigation }: Props) => {
 
     const { cart } = useContext(CartContext)
     const { container, bold, _2xl, _3xl, lg, xl, base } = theme;
 
-    const [billing, setBilling] = useState({
+    const [billing, setBilling] = useState<State>({
         item_total: 0,
         delivery_charge: 0,
         tax: 0,
@@ -89,7 +96,7 @@ export const Cart = ({ navigation }: Props) => {
                     <Text style={{ color: colors.mediumGray }}>Total</Text>
                     <Text style={[bold, lg]}>${billing.total}</Text>
                 </View>
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Payment', { cart, billing })}>
                     <View>
                         <Text style={[{ textAlign: 'center' }, bold]}>Confirm Order</Text>
                     </View>

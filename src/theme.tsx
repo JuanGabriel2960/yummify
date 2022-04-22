@@ -5,6 +5,8 @@ export const colors = {
     mediumGray: '#aaaaaa',
     boldYellow: '#ffbb20',
     mediumBlack: '#202020',
+    lightBlue: '#C1DFFB',
+    mediumBlue: '#3195F0',
 }
 
 export const theme = StyleSheet.create({

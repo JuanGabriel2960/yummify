@@ -1,5 +1,4 @@
-import { navigationOptionsType } from "../interfaces";
-import { valid_size } from '../interfaces/index';
+import { navigationOptionsType, valid_size, MethodsType, validPaymentMethods } from "../interfaces";
 
 export const navigationOptions: navigationOptionsType[] = [
     {
@@ -48,3 +47,22 @@ export const options: { text: string, type: string }[] = [
 ]
 
 export const sizes: valid_size[] = [valid_size.S, valid_size.M, valid_size.L]
+
+const cashIcon = require('../assets/cash-icon.png')
+const cardIcon = require('../assets/card-icon.png')
+const paypalIcon = require('../assets/paypal-icon.png')
+
+export const methods: MethodsType[] = [
+    {
+        icon: cashIcon,
+        text: validPaymentMethods.Cash
+    },
+    {
+        icon: cardIcon,
+        text: validPaymentMethods.Card
+    },
+    {
+        icon: paypalIcon,
+        text: validPaymentMethods.Paypal
+    },
+]

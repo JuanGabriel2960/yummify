@@ -1,7 +1,14 @@
+import { ImageSourcePropType } from "react-native";
+
 export interface navigationOptionsType {
     text: string;
     icon: string;
     navigate: string;
+}
+
+export interface MethodsType {
+    icon: ImageSourcePropType;
+    text: validPaymentMethods;
 }
 
 export interface RenewResp {
@@ -41,4 +48,10 @@ export enum valid_size {
     S = "S",
     M = "M",
     L = "L",
+}
+
+export enum validPaymentMethods {
+    Cash = "Cash",
+    Card = "Card",
+    Paypal = "Paypal",
 }
