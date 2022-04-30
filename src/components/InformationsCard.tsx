@@ -14,7 +14,7 @@ export const InformationsCard = () => {
                 <Icon style={{ marginRight: 10, backgroundColor: colors.boldYellow, padding: 10, borderRadius: 100 }} size={20} name="location-sharp" color="#202020" />
                 <View>
                     <Text style={{ color: colors.mediumGray }}>Your Delivery Address</Text>
-                    <Text style={[lg, bold]}>Caribbean Lake Park, Punta Cana</Text>
+                    <Text style={[lg, bold]}>Ciudad La Palma, Punta Cana</Text>
                 </View>
             </View>
         </View>
